@@ -474,6 +474,132 @@
         "main_account_session"
       ],
       "related": []
+    },
+    {
+      "id": "data_media_types",
+      "paths": [
+        "Telegram/SourceFiles/data/data_photo",
+        "Telegram/SourceFiles/data/data_document"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "models_history",
+        "storage_serialize"
+      ],
+      "related": [
+        "data_media_layout"
+      ]
+    },
+    {
+      "id": "dialogs_indexed_list",
+      "paths": [
+        "Telegram/SourceFiles/dialogs/dialogs_entry",
+        "Telegram/SourceFiles/dialogs/dialogs_indexed_list"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "models_peers",
+        "models_history",
+        "core_settings"
+      ],
+      "related": [
+        "ui_dialogs_widget"
+      ]
+    },
+    {
+      "id": "api_send_message",
+      "paths": [
+        "Telegram/SourceFiles/api/api_send_progress",
+        "Telegram/SourceFiles/apiwrap"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "main_account_session",
+        "models_history"
+      ],
+      "related": [
+        "ui_chat_input"
+      ]
+    },
+    {
+      "id": "data_media_layout",
+      "paths": [
+        "Telegram/SourceFiles/data/data_photo_media",
+        "Telegram/SourceFiles/data/data_document_media"
+      ],
+      "priority": 4,
+      "depends_on": [
+        "data_media_types",
+        "styles_parser"
+      ],
+      "related": [
+        "history_view_element"
+      ]
+    },
+    {
+      "id": "history_view_element",
+      "paths": [
+        "Telegram/SourceFiles/history/view/history_view_element",
+        "Telegram/SourceFiles/history/view/history_view_message"
+      ],
+      "priority": 5,
+      "depends_on": [
+        "models_history",
+        "ui_message_bubble",
+        "styles_parser",
+        "data_media_types"
+      ],
+      "related": [
+        "history_view_list"
+      ]
+    },
+    {
+      "id": "ui_dialogs_widget",
+      "paths": [
+        "Telegram/SourceFiles/dialogs/dialogs_widget",
+        "Telegram/SourceFiles/dialogs/dialogs_inner_widget"
+      ],
+      "priority": 5,
+      "depends_on": [
+        "dialogs_indexed_list",
+        "ui_dialog_row",
+        "styles_parser"
+      ],
+      "related": [
+        "ui_main_window"
+      ]
+    },
+    {
+      "id": "history_view_list",
+      "paths": [
+        "Telegram/SourceFiles/history/history_widget",
+        "Telegram/SourceFiles/history/history_inner_widget"
+      ],
+      "priority": 5,
+      "depends_on": [
+        "history_view_element",
+        "ui_chat_input",
+        "models_history"
+      ],
+      "related": [
+        "ui_main_window"
+      ]
+    },
+    {
+      "id": "ui_render_surface",
+      "paths": [
+        "Telegram/SourceFiles/ui/widgets/box_content_divider",
+        "Telegram/SourceFiles/ui/painter"
+      ],
+      "priority": 5,
+      "depends_on": [
+        "ui_main_window",
+        "styles_parser"
+      ],
+      "related": [
+        "ui_dialogs_widget",
+        "history_view_list"
+      ]
     }
   ]
 }
