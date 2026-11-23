@@ -1,0 +1,22 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/agent-hub",
+    "crates/tl_reader",
+    "crates/tl_writer",
+    "crates/tl_generator",
+    "crates/crypto_aes_ige",
+    "crates/crypto_kdf",
+    "crates/mtproto_transport",
+    "crates/mtproto_rsa_public_key",
+    "crates/styles_parser",
+    "crates/tdata_key_data",
+    "crates/mtproto_dc_options",
+    "crates/storage_serialize",
+    "crates/tdata_settings", "crates/models_peers", "crates/models_history",
+    "crates/core_settings", "crates/session_settings", "crates/serialize_models", "crates/models_autodownload", "crates/emoji_old_keys", "crates/ui_main_window", "crates/ui_dialog_row", "crates/ui_message_bubble", "crates/mtproto_auth_key", "crates/mtproto_session", "crates/ui_chat_input", "crates/main_account_session", "crates/api_updates", "crates/core_launcher",
+]
+
+[profile.release]
+opt-level = 2
+lto = true

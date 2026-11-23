@@ -1,0 +1,12 @@
+[package]
+name = "mtproto_auth_key"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+crypto_kdf = { path = "../crypto_kdf" }
+crypto_aes_ige = { path = "../crypto_aes_ige" }
+num-bigint = { version = "0.4", default-features = false }
+sha1 = "0.10"
+sha2 = "0.10"
+rand = "0.8"

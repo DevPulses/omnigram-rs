@@ -1,0 +1,9 @@
+[package]
+name = "api_updates"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+models_peers = { path = "../models_peers" }
+models_history = { path = "../models_history" }
+main_account_session = { path = "../main_account_session" }

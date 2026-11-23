@@ -1,0 +1,12 @@
+[package]
+name = "main_account_session"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+models_peers = { path = "../models_peers" }
+session_settings = { path = "../session_settings" }
+tdata_key_data = { path = "../tdata_key_data" }
+tdata_settings = { path = "../tdata_settings" }
+mtproto_session = { path = "../mtproto_session" }
+mtproto_auth_key = { path = "../mtproto_auth_key" }

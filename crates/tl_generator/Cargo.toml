@@ -1,0 +1,12 @@
+[package]
+name = "tl_generator"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tl_reader = { path = "../tl_reader" }
+tl_writer = { path = "../tl_writer" }
+
+[[bin]]
+name = "tl_generator"
+path = "src/main.rs"

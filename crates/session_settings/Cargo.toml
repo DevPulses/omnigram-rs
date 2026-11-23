@@ -1,0 +1,12 @@
+[package]
+name = "session_settings"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+models_peers = { path = "../models_peers" }
+core_settings = { path = "../core_settings" }
+storage_serialize = { path = "../storage_serialize" }
+
+[dev-dependencies]
+hex = "0.4"

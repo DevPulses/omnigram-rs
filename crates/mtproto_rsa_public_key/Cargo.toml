@@ -1,0 +1,13 @@
+[package]
+name = "mtproto_rsa_public_key"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+num-bigint = "0.4"
+sha1 = "0.10"
+tl_writer = { path = "../tl_writer" }
+rand = "0.8"
+
+[dev-dependencies]
+hex = "0.4"

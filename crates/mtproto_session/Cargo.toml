@@ -1,0 +1,13 @@
+[package]
+name = "mtproto_session"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tl_reader = { path = "../tl_reader" }
+tl_writer = { path = "../tl_writer" }
+crypto_aes_ige = { path = "../crypto_aes_ige" }
+crypto_kdf = { path = "../crypto_kdf" }
+mtproto_auth_key = { path = "../mtproto_auth_key" }
+sha2 = "0.10"
+rand = "0.8"

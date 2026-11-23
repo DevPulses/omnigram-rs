@@ -1,0 +1,479 @@
+{
+  "tasks": [
+    {
+      "id": "tl_reader",
+      "paths": [
+        "Telegram/SourceFiles/tl"
+      ],
+      "priority": 1,
+      "depends_on": [],
+      "related": [
+        "tl_generator",
+        "tl_writer"
+      ]
+    },
+    {
+      "id": "tl_writer",
+      "paths": [
+        "Telegram/SourceFiles/tl"
+      ],
+      "priority": 1,
+      "depends_on": [],
+      "related": [
+        "tl_generator",
+        "tl_reader"
+      ]
+    },
+    {
+      "id": "tl_generator",
+      "paths": [
+        "Telegram/SourceFiles/codegen"
+      ],
+      "priority": 1,
+      "depends_on": [
+        "tl_reader",
+        "tl_writer"
+      ],
+      "related": []
+    },
+    {
+      "id": "crypto_aes_ige",
+      "paths": [
+        "Telegram/SourceFiles/mtproto"
+      ],
+      "priority": 1,
+      "depends_on": [
+        "tl_reader",
+        "tl_writer"
+      ],
+      "related": [
+        "crypto_kdf",
+        "mtproto_transport"
+      ]
+    },
+    {
+      "id": "crypto_kdf",
+      "paths": [
+        "Telegram/SourceFiles/mtproto"
+      ],
+      "priority": 1,
+      "depends_on": [
+        "tl_reader",
+        "tl_writer"
+      ],
+      "related": [
+        "crypto_aes_ige",
+        "mtproto_transport"
+      ]
+    },
+    {
+      "id": "mtproto_transport",
+      "paths": [
+        "Telegram/SourceFiles/mtproto/details/mtproto_tcp",
+        "Telegram/SourceFiles/mtproto"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "tl_reader",
+        "tl_writer"
+      ],
+      "related": [
+        "crypto_aes_ige",
+        "crypto_kdf",
+        "mtproto_rsa_public_key"
+      ]
+    },
+    {
+      "id": "tdata_key_data",
+      "paths": [
+        "Telegram/SourceFiles/storage/details/storage_file_utilities"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "crypto_aes_ige",
+        "crypto_kdf",
+        "mtproto_transport"
+      ],
+      "related": [
+        "tdata_settings",
+        "storage_serialize"
+      ]
+    },
+    {
+      "id": "tdata_settings",
+      "paths": [
+        "Telegram/SourceFiles/storage/details/storage_file_utilities",
+        "Telegram/SourceFiles/storage/storage_account"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "crypto_aes_ige",
+        "crypto_kdf",
+        "mtproto_transport"
+      ],
+      "related": [
+        "tdata_key_data",
+        "ui_main_window",
+        "mtproto_dc_options",
+        "core_settings",
+        "session_settings"
+      ]
+    },
+    {
+      "id": "models_peers",
+      "paths": [
+        "Telegram/SourceFiles/data/data_peer"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "crypto_aes_ige",
+        "crypto_kdf",
+        "mtproto_transport",
+        "tdata_settings",
+        "storage_serialize"
+      ],
+      "related": [
+        "models_history",
+        "ui_main_window",
+        "ui_message_bubble",
+        "serialize_models",
+        "session_settings"
+      ]
+    },
+    {
+      "id": "models_history",
+      "paths": [
+        "Telegram/SourceFiles/history/history_item"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "crypto_aes_ige",
+        "crypto_kdf",
+        "mtproto_transport",
+        "storage_serialize"
+      ],
+      "related": [
+        "models_peers",
+        "ui_main_window",
+        "ui_message_bubble",
+        "serialize_models",
+        "session_settings"
+      ]
+    },
+    {
+      "id": "styles_parser",
+      "paths": [
+        "Telegram/SourceFiles/ui/style",
+        "Telegram/SourceFiles/codegen/stylesheet"
+      ],
+      "priority": 4,
+      "depends_on": [],
+      "related": []
+    },
+    {
+      "id": "ui_main_window",
+      "paths": [
+        "Telegram/SourceFiles/main/main_window",
+        "Telegram/SourceFiles/window"
+      ],
+      "priority": 5,
+      "depends_on": [
+        "crypto_aes_ige",
+        "crypto_kdf",
+        "mtproto_transport",
+        "styles_parser",
+        "core_settings"
+      ],
+      "related": [
+        "models_history",
+        "models_peers",
+        "tdata_settings",
+        "ui_dialog_row",
+        "ui_message_bubble"
+      ]
+    },
+    {
+      "id": "ui_dialog_row",
+      "paths": [
+        "Telegram/SourceFiles/dialogs/ui"
+      ],
+      "priority": 5,
+      "depends_on": [
+        "models_history",
+        "models_peers",
+        "core_settings"
+      ],
+      "related": [
+        "ui_main_window",
+        "ui_message_bubble"
+      ]
+    },
+    {
+      "id": "ui_message_bubble",
+      "paths": [
+        "Telegram/SourceFiles/history/view/controls",
+        "Telegram/SourceFiles/history/view"
+      ],
+      "priority": 5,
+      "depends_on": [
+        "crypto_aes_ige",
+        "crypto_kdf",
+        "mtproto_transport",
+        "styles_parser",
+        "tdata_settings",
+        "core_settings"
+      ],
+      "related": [
+        "models_history",
+        "models_peers",
+        "ui_dialog_row",
+        "ui_main_window"
+      ]
+    },
+    {
+      "id": "mtproto_dc_options",
+      "paths": [
+        "Telegram/SourceFiles/mtproto/mtproto_dc_options",
+        "Telegram/SourceFiles/mtproto/mtproto_config"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "tl_reader",
+        "tl_writer",
+        "crypto_kdf"
+      ],
+      "related": [
+        "tdata_settings",
+        "mtproto_transport",
+        "crypto_aes_ige",
+        "mtproto_rsa_public_key"
+      ]
+    },
+    {
+      "id": "storage_serialize",
+      "paths": [
+        "Telegram/SourceFiles/storage/serialize_common"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "tl_reader",
+        "tl_writer"
+      ],
+      "related": [
+        "tdata_key_data",
+        "tdata_settings",
+        "models_peers",
+        "models_history",
+        "serialize_models"
+      ]
+    },
+    {
+      "id": "core_settings",
+      "paths": [
+        "Telegram/SourceFiles/core/core_settings"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "tdata_settings",
+        "storage_serialize"
+      ],
+      "related": [
+        "session_settings",
+        "styles_parser",
+        "ui_main_window",
+        "ui_message_bubble"
+      ]
+    },
+    {
+      "id": "session_settings",
+      "paths": [
+        "Telegram/SourceFiles/main/main_session_settings"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "tdata_settings",
+        "storage_serialize"
+      ],
+      "related": [
+        "core_settings",
+        "models_peers",
+        "models_history",
+        "emoji_old_keys",
+        "serialize_models",
+        "models_autodownload",
+        "storage_serialize"
+      ]
+    },
+    {
+      "id": "serialize_models",
+      "paths": [
+        "Telegram/SourceFiles/storage/serialize_peer",
+        "Telegram/SourceFiles/storage/serialize_document"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "models_peers",
+        "models_history",
+        "storage_serialize"
+      ],
+      "related": [
+        "session_settings",
+        "tdata_settings"
+      ]
+    },
+    {
+      "id": "emoji_old_keys",
+      "paths": [
+        "Telegram/lib_ui/ui/emoji_config"
+      ],
+      "priority": 4,
+      "depends_on": [
+        "storage_serialize"
+      ],
+      "related": [
+        "session_settings",
+        "core_settings",
+        "ui_message_bubble"
+      ]
+    },
+    {
+      "id": "mtproto_rsa_public_key",
+      "paths": [
+        "Telegram/SourceFiles/mtproto/details/mtproto_rsa_public_key"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "tl_reader",
+        "tl_writer"
+      ],
+      "related": [
+        "mtproto_dc_options",
+        "crypto_kdf",
+        "mtproto_transport"
+      ]
+    },
+    {
+      "id": "models_autodownload",
+      "paths": [
+        "Telegram/SourceFiles/data/data_auto_download"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "storage_serialize"
+      ],
+      "related": [
+        "session_settings",
+        "core_settings",
+        "models_peers"
+      ]
+    },
+    {
+      "id": "mtproto_auth_key",
+      "paths": [
+        "Telegram/SourceFiles/mtproto/mtproto_auth_key",
+        "Telegram/SourceFiles/mtproto/mtproto_dh_utils"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "tl_reader",
+        "tl_writer",
+        "crypto_kdf",
+        "crypto_aes_ige",
+        "mtproto_rsa_public_key"
+      ],
+      "related": [
+        "mtproto_transport",
+        "tdata_key_data"
+      ]
+    },
+    {
+      "id": "mtproto_session",
+      "paths": [
+        "Telegram/SourceFiles/mtproto/core_types",
+        "Telegram/SourceFiles/mtproto/details/mtproto_serialized_request",
+        "Telegram/SourceFiles/mtproto/session"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "tl_reader",
+        "tl_writer",
+        "crypto_kdf",
+        "crypto_aes_ige",
+        "mtproto_transport",
+        "mtproto_auth_key"
+      ],
+      "related": [
+        "tdata_settings",
+        "mtproto_dc_options"
+      ]
+    },
+    {
+      "id": "ui_chat_input",
+      "paths": [
+        "Telegram/SourceFiles/history/view/controls/history_view_compose_controls",
+        "Telegram/SourceFiles/chat_helpers/chat_helpers.style"
+      ],
+      "priority": 5,
+      "depends_on": [
+        "core_settings",
+        "styles_parser",
+        "models_history"
+      ],
+      "related": [
+        "ui_main_window",
+        "ui_message_bubble"
+      ]
+    },
+    {
+      "id": "main_account_session",
+      "paths": [
+        "Telegram/SourceFiles/main/main_account",
+        "Telegram/SourceFiles/main/main_session"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "mtproto_session",
+        "tdata_key_data",
+        "tdata_settings",
+        "session_settings",
+        "models_peers"
+      ],
+      "related": [
+        "core_settings"
+      ]
+    },
+    {
+      "id": "api_updates",
+      "paths": [
+        "Telegram/SourceFiles/api/api_updates",
+        "Telegram/SourceFiles/data/data_pts_waiter"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "main_account_session",
+        "models_history",
+        "models_peers"
+      ],
+      "related": [
+        "session_settings"
+      ]
+    },
+    {
+      "id": "core_launcher",
+      "paths": [
+        "Telegram/SourceFiles/main",
+        "Telegram/SourceFiles/core/launcher"
+      ],
+      "priority": 5,
+      "depends_on": [
+        "core_settings",
+        "ui_main_window",
+        "ui_dialog_row",
+        "ui_message_bubble",
+        "ui_chat_input",
+        "main_account_session"
+      ],
+      "related": []
+    }
+  ]
+}

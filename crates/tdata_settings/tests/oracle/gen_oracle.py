@@ -1,0 +1,212 @@
+#!/usr/bin/env python3
+"""Oracle generator for the tdata_settings crate.
+
+Re-implements the `QDataStream` payloads of
+`tdesktop/Telegram/SourceFiles/storage/details/storage_settings_scheme.cpp`
+from scratch — no code shared with the Rust port — and emits one settings map
+as hex, together with the nested payloads the reader must reproduce.
+
+Run:
+
+    python3 crates/tdata_settings/tests/oracle/gen_oracle.py
+"""
+
+import pathlib
+import struct
+
+HERE = pathlib.Path(__file__).resolve().parent
+OUT = HERE.parent / "vectors" / "mod.rs"
+
+VERSION = 7004002
+
+
+# --- QDataStream writers ----------------------------------------------------
+
+
+def u32(value):
+    return struct.pack(">I", value)
+
+
+def i32(value):
+    return struct.pack(">i", value)
+
+
+def u64(value):
+    return struct.pack(">Q", value)
+
+
+def i64(value):
+    return struct.pack(">q", value)
+
+
+def boolean(value):
+    return bytes([1 if value else 0])
+
+
+def bytearray(value):
+    return u32(len(value)) + value
+
+
+def qstring(value):
+    units = value.encode("utf-16-be")
+    return u32(len(units)) + units
+
+
+def pairs_u64_u16(items):
+    out = u32(len(items))
+    for key, count in items:
+        out += u64(key) + struct.pack(">H", count)
+    return out
+
+
+def pairs_string_u16(items):
+    out = u32(len(items))
+    for key, count in items:
+        out += qstring(key) + struct.pack(">H", count)
+    return out
+
+
+def map_u64_i32(items):
+    out = u32(len(items))
+    for key, value in items:
+        out += u64(key) + i32(value)
+    return out
+
+
+def block(block_id, payload):
+    return u32(block_id) + payload
+
+
+WRITTEN_SESSION = b"session_settings"
+WRITTEN_MTP = b"mtp-authorization"
+# `writeSessionSettings`: cache limits, then session settings, then stickers.
+WRITTEN = (
+    block(
+        0x5C,
+        i64(150 * 1024 * 1024) + i32(7200) + i64(300 * 1024 * 1024) + i32(60),
+    )
+    + block(0x4D, bytearray(WRITTEN_SESSION))
+    + block(0x26, pairs_u64_u16([(5, 1), (6, 2)]))
+)
+# `writeMtpData`: one authorization block.
+WRITTEN_MTP_DATA = block(0x4B, bytearray(WRITTEN_MTP))
+
+
+# --- fixture ----------------------------------------------------------------
+
+APP_SETTINGS = b"app-settings"
+SESSION_SETTINGS = b"session-settings"
+MTP_AUTHORIZATION = bytes(range(0x40, 0x60))
+CALL_SETTINGS = qstring("speakers") + i32(100) + qstring("microphone") + i32(50) + i32(1)
+FALLBACK_CONFIG = b""
+
+MAP = b"".join(
+    [
+        # Modern blocks that only fill the context.
+        block(0x5E, bytearray(APP_SETTINGS)),  # dbiApplicationSettings
+        block(0x4D, bytearray(SESSION_SETTINGS)),  # dbiSessionSettings
+        block(0x5C, i64(100 * 1024 * 1024) + i32(3600) + i64(200 * 1024 * 1024) + i32(0)),
+        # Legacy tile flag, read while night mode is still off.
+        block(0x21, i32(1)),  # dbiTileBackgroundOld -> tileNight = true
+        block(0x54, u64(0x1111_1111_1111_1111) + u64(0x2222_2222_2222_2222) + u32(1)),
+        block(0x55, i32(2) + i32(0)),  # dbiTileBackground -> tileDay true, tileNight false
+        block(0x61, u64(0x3333_3333_3333_3333) + u64(0x4444_4444_4444_4444)),
+        block(0x4E, u64(0x5555_5555_5555_5555)),
+        block(0x5A, u64(0x6666_6666_6666_6666)),
+        block(0x4B, bytearray(MTP_AUTHORIZATION)),
+        block(0x26, pairs_u64_u16([(11, 3), (22, 7)])),  # dbiRecentStickers
+        # Modern scalar blocks reported as effects.
+        block(0x06, i32(1)),  # dbiAutoStart
+        block(0x58, i32(150)),  # dbiScalePercent
+        block(0x23, qstring("/home/loth")),  # dbiDialogLastPath
+        block(0x57, i32(3)),  # dbiPowerSaving
+        # Legacy blocks.
+        block(0x08, i32(0x00)),  # sound off, flash bounce on
+        block(0x09, i32(5)),  # unknown work mode -> WindowAndTray
+        block(0x1C, i32(2)),  # NotifyView ShowNothing
+        block(0x48, i32(750000)),  # 0.75
+        block(0x27, u32(2) + i32(0x10) + qstring("149.154.167.50") + u32(443)),
+        block(0x03, i32(100)),  # dbiChatSizeMaxOld
+        block(0x50, i32(200)),  # dbiStickersFavedLimitOld
+        block(0x5D, qstring("telegram.org")),  # dbiTxtDomainStringOld
+        block(0x60, bytearray(FALLBACK_CONFIG)),
+        block(0x0E, i32(10) + i32(20) + i32(800) + i32(600) + u64(0xABCD) + boolean(False)),
+        block(0x05, i32(1)),  # dbiSendKeyOld -> Ctrl+Enter
+        block(0x5B, bytearray(CALL_SETTINGS)),
+        block(0x0F, i32(3) + qstring("proxy.local") + i32(1080) + qstring("user") + qstring("pass")),
+        block(0x39, map_u64_i32([(100, 5), (200, 7)])),
+        block(0x5F, i32(1)),  # dbiDialogsFiltersOld
+        block(0x29, i32(1_000_000)),  # song volume 1.0
+        block(0x42, i32(2_000_000)),  # video volume clamped to 1.0
+        block(0x3A, pairs_string_u16([("smile", 4)])),  # dbiRecentEmojiOld
+        block(0x25, u32(1) + u32(0x1F600) + u64(2)),  # dbiEmojiVariantsOldOld
+        block(0x3B, u32(1) + qstring("smile") + i32(1)),  # dbiEmojiVariantsOld
+    ]
+)
+
+
+def main():
+    lines = [
+        "// @generated by tests/oracle/gen_oracle.py — do not edit by hand.",
+        "//",
+        "// Oracle: an independent Python writer of the QDataStream payloads the",
+        "// C++ settings scheme produces.",
+        "#![allow(dead_code)]",
+        "",
+        f"pub const VERSION: i32 = {VERSION};",
+        "",
+        f'pub const APP_SETTINGS_HEX: &str = "{APP_SETTINGS.hex()}";',
+        f'pub const SESSION_SETTINGS_HEX: &str = "{SESSION_SETTINGS.hex()}";',
+        f'pub const MTP_AUTHORIZATION_HEX: &str = "{MTP_AUTHORIZATION.hex()}";',
+        f'pub const CALL_SETTINGS_HEX: &str = "{CALL_SETTINGS.hex()}";',
+        "",
+        "/// The whole settings map: block ids with their payloads.",
+        f'pub const MAP_HEX: &str = "{MAP.hex()}";',
+        "",
+        "/// The first block only: dbiApplicationSettings plus its payload.",
+        f'pub const APP_SETTINGS_BLOCK_HEX: &str = "{block(0x5E, bytearray(APP_SETTINGS)).hex()}";',
+        "",
+        "/// A map whose fallback config block carries a serialized config.",
+        f'pub const MAP_WITH_CONFIG_HEX: &str = "{block(0x60, bytearray(b"fallback-config")).hex()}";',
+        "",
+        "/// A map the reader must refuse: an id the scheme does not know.",
+        f'pub const MAP_UNKNOWN_BLOCK_HEX: &str = "{block(0x7F, i32(1)).hex()}";',
+        "",
+        "/// A map the reader must refuse: the payload is one byte short.",
+        f'pub const MAP_TRUNCATED_HEX: &str = "{(u32(0x54) + u64(1) + u64(2)).hex()}";',
+        "",
+        "/// A map the reader must refuse: dbiSendKeyOld with Both (2).",
+        f'pub const MAP_BAD_SEND_KEY_HEX: &str = "{block(0x05, i32(2)).hex()}";',
+        "",
+        "/// A map the reader must refuse: a cache limit at or below the minimum.",
+        f'pub const MAP_SMALL_CACHE_HEX: &str = "{block(0x5C, i64(1024) + i32(0) + i64(2048) + i32(0)).hex()}";',
+        "",
+        "/// A cache block whose time limits are the \"no limit\" sentinels.",
+        f'pub const MAP_NO_TIME_LIMIT_HEX: &str = "{block(0x5C, i64(64 * 1024 * 1024) + i32(-1) + i64(64 * 1024 * 1024) + i32(0)).hex()}";',
+        "",
+        "/// dbiWindowPositionOld alone, maximized.",
+        f'pub const MAP_WINDOW_MAXIMIZED_HEX: &str = "{block(0x0E, i32(-5) + i32(-6) + i32(1280) + i32(720) + u64(0xFEED) + boolean(True)).hex()}";',
+        "",
+        "/// dbiConnectionTypeOld with a two-entry proxy list, index 2 selected.",
+        f'pub const MAP_PROXY_LIST_HEX: &str = "{block(0x4F, i32(5) + i32(2) + i32(2) + i32(1) + i32(1) + (i32(2) + qstring("first.local") + i32(80) + qstring("u1") + qstring("p1")) + (i32(3) + qstring("second.local") + i32(1080) + qstring("u2") + qstring("p2"))).hex()}";',
+        "",
+        "/// `writeSessionSettings` — the payload the port must produce.",
+        f'pub const WRITTEN_SETTINGS_HEX: &str = "{WRITTEN.hex()}";',
+        f'pub const WRITTEN_SESSION_SETTINGS_HEX: &str = "{WRITTEN_SESSION.hex()}";',
+        "",
+        "/// `writeMtpData` — the separate data-file payload.",
+        f'pub const WRITTEN_MTP_DATA_HEX: &str = "{WRITTEN_MTP_DATA.hex()}";',
+        f'pub const WRITTEN_MTP_AUTHORIZATION_HEX: &str = "{WRITTEN_MTP.hex()}";',
+        "",
+        "/// dbiConnectionTypeOld with the oldest list shape: index 1 of 1.",
+        f'pub const MAP_PROXY_LIST_OLD_HEX: &str = "{block(0x4F, i32(4) + i32(1) + i32(1) + (i32(3) + qstring("only.local") + i32(1080) + qstring("u") + qstring("p"))).hex()}";',
+        "",
+    ]
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text("\n".join(lines))
+    print(f"wrote {OUT}")
+    print(f"map is {len(MAP)} bytes")
+
+
+if __name__ == "__main__":
+    main()

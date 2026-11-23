@@ -1,0 +1,11 @@
+[package]
+name = "models_history"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+models_peers = { path = "../models_peers" }
+storage_serialize = { path = "../storage_serialize" }
+
+[dev-dependencies]
+hex = "0.4"

@@ -1,0 +1,14 @@
+[package]
+name = "core_launcher"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+core_settings = { path = "../core_settings" }
+main_account_session = { path = "../main_account_session" }
+ui_main_window = { path = "../ui_main_window" }
+ui_dialog_row = { path = "../ui_dialog_row" }
+ui_message_bubble = { path = "../ui_message_bubble" }
+ui_chat_input = { path = "../ui_chat_input" }
+models_peers = { path = "../models_peers" }
+models_history = { path = "../models_history" }

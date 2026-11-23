@@ -1,0 +1,9 @@
+[package]
+name = "storage_serialize"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[dev-dependencies]
+hex = "0.4"

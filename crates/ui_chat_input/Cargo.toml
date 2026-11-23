@@ -1,0 +1,8 @@
+[package]
+name = "ui_chat_input"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+models_history = { path = "../models_history" }
+core_settings = { path = "../core_settings" }

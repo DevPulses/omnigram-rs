@@ -1,0 +1,10 @@
+[package]
+name = "core_settings"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+storage_serialize = { path = "../storage_serialize" }
+
+[dev-dependencies]
+hex = "0.4"

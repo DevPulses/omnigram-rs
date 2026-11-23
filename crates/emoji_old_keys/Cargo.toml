@@ -1,0 +1,7 @@
+[package]
+name = "emoji_old_keys"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+storage_serialize = { path = "../storage_serialize" }

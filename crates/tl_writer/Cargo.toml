@@ -1,0 +1,7 @@
+[package]
+name = "tl_writer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tl_reader = { path = "../tl_reader" }

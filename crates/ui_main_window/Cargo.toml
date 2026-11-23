@@ -1,0 +1,8 @@
+[package]
+name = "ui_main_window"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+core_settings = { path = "../core_settings" }
+styles_parser = { path = "../styles_parser" }
