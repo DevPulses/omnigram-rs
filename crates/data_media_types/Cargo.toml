@@ -1,0 +1,10 @@
+[package]
+name = "data_media_types"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+models_history = { path = "../models_history" }
+storage_serialize = { path = "../storage_serialize" }
+serialize_models = { path = "../serialize_models" }
+serde = { version = "1.0", features = ["derive"] }

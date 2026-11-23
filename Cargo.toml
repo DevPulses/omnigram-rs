@@ -14,7 +14,7 @@ members = [
     "crates/mtproto_dc_options",
     "crates/storage_serialize",
     "crates/tdata_settings", "crates/models_peers", "crates/models_history",
-    "crates/core_settings", "crates/session_settings", "crates/serialize_models", "crates/models_autodownload", "crates/emoji_old_keys", "crates/ui_main_window", "crates/ui_dialog_row", "crates/ui_message_bubble", "crates/mtproto_auth_key", "crates/mtproto_session", "crates/ui_chat_input", "crates/main_account_session", "crates/api_updates", "crates/core_launcher",
+    "crates/core_settings", "crates/session_settings", "crates/serialize_models", "crates/models_autodownload", "crates/emoji_old_keys", "crates/ui_main_window", "crates/ui_dialog_row", "crates/ui_message_bubble", "crates/mtproto_auth_key", "crates/mtproto_session", "crates/ui_chat_input", "crates/main_account_session", "crates/api_updates", "crates/core_launcher", "crates/data_media_types",
 ]
 
 [profile.release]

@@ -25,6 +25,21 @@
       "agent": "claude-main",
       "locked": false
     },
+    "data_media_layout": {
+      "status": "pending",
+      "agent": null,
+      "locked": false
+    },
+    "data_media_types": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
+    "dialogs_indexed_list": {
+      "status": "in_progress",
+      "agent": "glyph",
+      "locked": false
+    },
     "emoji_old_keys": {
       "status": "done",
       "agent": "hermes",
@@ -129,6 +144,11 @@
       "status": "done",
       "agent": "hermes",
       "locked": false
+    },
+    "ui_dialogs_widget": {
+      "status": "pending",
+      "agent": "glyph",
+      "locked": true
     },
     "ui_main_window": {
       "status": "done",
