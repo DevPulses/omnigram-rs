@@ -1,5 +1,10 @@
 {
   "tasks": {
+    "api_send_message": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
     "api_updates": {
       "status": "done",
       "agent": "hermes",

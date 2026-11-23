@@ -1,0 +1,11 @@
+[package]
+name = "api_send_message"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+models_history = { path = "../models_history" }
+models_peers = { path = "../models_peers" }
+main_account_session = { path = "../main_account_session" }
+rand = "0.8"
+serde = { version = "1.0", features = ["derive"] }
