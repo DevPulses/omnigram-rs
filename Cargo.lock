@@ -23,6 +23,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "api_send_message"
+version = "0.1.0"
+dependencies = [
+ "main_account_session",
+ "models_history",
+ "models_peers",
+ "rand",
+ "serde",
+]
+
+[[package]]
 name = "api_updates"
 version = "0.1.0"
 dependencies = [
@@ -160,6 +171,35 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0369ee1ad671834580515889b80f2ea915f23b8be8d0daa4bbaf2ac5c7590835"
 dependencies = [
  "cipher",
+]
+
+[[package]]
+name = "data_media_layout"
+version = "0.1.0"
+dependencies = [
+ "bitflags",
+ "data_media_types",
+ "serde",
+ "storage_serialize",
+ "styles_parser",
+]
+
+[[package]]
+name = "data_media_types"
+version = "0.1.0"
+dependencies = [
+ "models_history",
+ "serde",
+ "serialize_models",
+ "storage_serialize",
+]
+
+[[package]]
+name = "dialogs_indexed_list"
+version = "0.1.0"
+dependencies = [
+ "models_history",
+ "models_peers",
 ]
 
 [[package]]

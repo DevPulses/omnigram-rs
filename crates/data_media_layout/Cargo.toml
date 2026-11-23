@@ -1,0 +1,11 @@
+[package]
+name = "data_media_layout"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+data_media_types = { path = "../data_media_types" }
+styles_parser = { path = "../styles_parser" }
+storage_serialize = { path = "../storage_serialize" }
+bitflags = "2.4"
+serde = { version = "1.0", features = ["derive"] }
