@@ -1,0 +1,10 @@
+[package]
+name = "storage_file_transfer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mtproto_client = { path = "../mtproto_client" }
+data_media_types = { path = "../data_media_types" }
+storage_serialize = { path = "../storage_serialize" }
+md-5 = "0.10"

@@ -160,6 +160,11 @@
       "agent": "hermes",
       "locked": false
     },
+    "storage_file_transfer": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
     "storage_media_prepare": {
       "status": "done",
       "agent": "hermes",
