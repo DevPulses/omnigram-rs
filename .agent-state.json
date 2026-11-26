@@ -229,6 +229,11 @@
       "status": "done",
       "agent": "hermes",
       "locked": false
+    },
+    "window_notifications": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
     }
   }
 }

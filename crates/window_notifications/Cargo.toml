@@ -1,0 +1,9 @@
+[package]
+name = "window_notifications"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+core_settings = { path = "../core_settings" }
+models_history = { path = "../models_history" }
+models_peers = { path = "../models_peers" }
