@@ -70,6 +70,11 @@
       "agent": "hermes",
       "locked": false
     },
+    "history_view_list": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
     "main_account_session": {
       "status": "done",
       "agent": "hermes",
@@ -181,8 +186,8 @@
       "locked": false
     },
     "ui_dialogs_widget": {
-      "status": "pending",
-      "agent": null,
+      "status": "done",
+      "agent": "hermes",
       "locked": false
     },
     "ui_main_window": {
@@ -191,6 +196,11 @@
       "locked": false
     },
     "ui_message_bubble": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
+    "ui_theme_palette": {
       "status": "done",
       "agent": "hermes",
       "locked": false

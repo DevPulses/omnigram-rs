@@ -1,0 +1,10 @@
+[package]
+name = "ui_dialogs_widget"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dialogs_indexed_list = { path = "../dialogs_indexed_list" }
+ui_dialog_row = { path = "../ui_dialog_row" }
+styles_parser = { path = "../styles_parser" }
+models_peers = { path = "../models_peers" }

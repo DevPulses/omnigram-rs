@@ -1,0 +1,8 @@
+[package]
+name = "ui_theme_palette"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+styles_parser = { path = "../styles_parser" }
+core_settings = { path = "../core_settings" }

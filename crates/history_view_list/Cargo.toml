@@ -1,0 +1,10 @@
+[package]
+name = "history_view_list"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+history_view_element = { path = "../history_view_element" }
+ui_chat_input = { path = "../ui_chat_input" }
+models_history = { path = "../models_history" }
+models_peers = { path = "../models_peers" }

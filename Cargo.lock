@@ -288,6 +288,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "history_view_list"
+version = "0.1.0"
+dependencies = [
+ "history_view_element",
+ "models_history",
+ "models_peers",
+ "ui_chat_input",
+]
+
+[[package]]
 name = "hmac"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -762,6 +772,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "ui_dialogs_widget"
+version = "0.1.0"
+dependencies = [
+ "dialogs_indexed_list",
+ "models_peers",
+ "styles_parser",
+ "ui_dialog_row",
+]
+
+[[package]]
 name = "ui_main_window"
 version = "0.1.0"
 dependencies = [
@@ -776,6 +796,14 @@ dependencies = [
  "core_settings",
  "models_history",
  "models_peers",
+]
+
+[[package]]
+name = "ui_theme_palette"
+version = "0.1.0"
+dependencies = [
+ "core_settings",
+ "styles_parser",
 ]
 
 [[package]]
