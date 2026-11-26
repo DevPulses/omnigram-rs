@@ -1,0 +1,8 @@
+[package]
+name = "media_audio_player"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+data_media_types = { path = "../data_media_types" }
+core_settings = { path = "../core_settings" }
