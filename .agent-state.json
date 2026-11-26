@@ -180,6 +180,11 @@
       "agent": "hermes",
       "locked": false
     },
+    "storage_shared_media": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
     "styles_parser": {
       "status": "done",
       "agent": "kimi1",
