@@ -35,6 +35,11 @@
       "agent": "hermes",
       "locked": false
     },
+    "data_folders": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
     "data_media_layout": {
       "status": "done",
       "agent": "hermes",

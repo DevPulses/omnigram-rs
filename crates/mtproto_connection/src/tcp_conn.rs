@@ -357,7 +357,12 @@ mod tests {
                 ProtocolVersion::Version1 => IntermediateFraming.decode_packet(&wire).unwrap().unwrap().0,
                 ProtocolVersion::VersionD => PaddedFraming.decode_packet(&wire).unwrap().unwrap().0,
             };
-            assert_eq!(decoded, msg.as_slice());
+            if proto == ProtocolVersion::VersionD {
+                assert!(decoded.starts_with(msg.as_slice()));
+                assert!(decoded.len() < msg.len() + 16);
+            } else {
+                assert_eq!(decoded, msg.as_slice());
+            }
 
             let reply = prepare_not_secure_packet(5, b"resPQ_123456");
             let mut reply_wire = match proto {

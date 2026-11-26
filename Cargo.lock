@@ -183,6 +183,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "data_folders"
+version = "0.1.0"
+dependencies = [
+ "bitflags",
+ "core_settings",
+ "models_peers",
+]
+
+[[package]]
 name = "data_media_layout"
 version = "0.1.0"
 dependencies = [
