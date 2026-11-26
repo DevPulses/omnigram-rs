@@ -200,6 +200,11 @@
       "agent": "hermes",
       "locked": false
     },
+    "ui_render_surface": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
     "ui_theme_palette": {
       "status": "done",
       "agent": "hermes",

@@ -681,6 +681,68 @@
         "core_settings"
       ],
       "related": []
+    },
+    {
+      "id": "ui_text_entities",
+      "paths": [
+        "Telegram/lib_ui/ui/text/text",
+        "Telegram/lib_ui/ui/text/text_entity"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "models_history",
+        "styles_parser"
+      ],
+      "related": []
+    },
+    {
+      "id": "storage_media_prepare",
+      "paths": [
+        "Telegram/SourceFiles/storage/storage_media_prepare"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "data_media_types",
+        "storage_serialize"
+      ],
+      "related": []
+    },
+    {
+      "id": "media_audio_player",
+      "paths": [
+        "Telegram/SourceFiles/media/audio/media_audio"
+      ],
+      "priority": 4,
+      "depends_on": [
+        "data_media_types",
+        "core_settings"
+      ],
+      "related": []
+    },
+    {
+      "id": "calls_engine",
+      "paths": [
+        "Telegram/SourceFiles/calls/calls_call"
+      ],
+      "priority": 4,
+      "depends_on": [
+        "mtproto_session",
+        "models_peers"
+      ],
+      "related": []
+    },
+    {
+      "id": "window_notifications",
+      "paths": [
+        "Telegram/SourceFiles/window/notifications_manager"
+      ],
+      "priority": 5,
+      "depends_on": [
+        "core_settings",
+        "models_history",
+        "models_peers"
+      ],
+      "related": []
     }
   ]
 }

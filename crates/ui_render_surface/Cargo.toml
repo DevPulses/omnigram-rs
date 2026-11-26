@@ -1,0 +1,8 @@
+[package]
+name = "ui_render_surface"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ui_main_window = { path = "../ui_main_window" }
+styles_parser = { path = "../styles_parser" }

@@ -799,6 +799,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "ui_render_surface"
+version = "0.1.0"
+dependencies = [
+ "styles_parser",
+ "ui_main_window",
+]
+
+[[package]]
 name = "ui_theme_palette"
 version = "0.1.0"
 dependencies = [
