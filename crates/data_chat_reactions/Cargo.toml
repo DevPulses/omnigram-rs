@@ -1,0 +1,9 @@
+[package]
+name = "data_chat_reactions"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+models_history = { path = "../models_history" }
+models_peers = { path = "../models_peers" }
+data_media_types = { path = "../data_media_types" }

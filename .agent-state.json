@@ -30,6 +30,11 @@
       "agent": "claude-main",
       "locked": false
     },
+    "data_chat_reactions": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
     "data_media_layout": {
       "status": "done",
       "agent": "hermes",
