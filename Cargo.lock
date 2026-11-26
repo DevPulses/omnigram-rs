@@ -483,6 +483,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "mtproto_config"
+version = "0.1.0"
+dependencies = [
+ "mtproto_client",
+ "mtproto_dc_options",
+ "storage_serialize",
+]
+
+[[package]]
 name = "mtproto_connection"
 version = "0.1.0"
 dependencies = [

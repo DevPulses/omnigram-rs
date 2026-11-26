@@ -1,0 +1,9 @@
+[package]
+name = "mtproto_config"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mtproto_dc_options = { path = "../mtproto_dc_options" }
+mtproto_client = { path = "../mtproto_client" }
+storage_serialize = { path = "../storage_serialize" }
