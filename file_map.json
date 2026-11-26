@@ -600,6 +600,87 @@
         "ui_dialogs_widget",
         "history_view_list"
       ]
+    },
+    {
+      "id": "mtproto_connection",
+      "paths": [
+        "Telegram/SourceFiles/mtproto/connection_abstract",
+        "Telegram/SourceFiles/mtproto/connection_tcp"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "mtproto_transport",
+        "mtproto_dc_options",
+        "mtproto_session"
+      ],
+      "related": [
+        "mtproto_auth_flow"
+      ]
+    },
+    {
+      "id": "mtproto_auth_flow",
+      "paths": [
+        "Telegram/SourceFiles/intro/intro_phone",
+        "Telegram/SourceFiles/intro/intro_code",
+        "Telegram/SourceFiles/intro/intro_pwd_check"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "mtproto_session",
+        "main_account_session"
+      ],
+      "related": [
+        "mtproto_connection"
+      ]
+    },
+    {
+      "id": "data_chat_reactions",
+      "paths": [
+        "Telegram/SourceFiles/data/data_message_reactions"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "models_history",
+        "models_peers"
+      ],
+      "related": []
+    },
+    {
+      "id": "data_polls",
+      "paths": [
+        "Telegram/SourceFiles/data/data_poll",
+        "Telegram/SourceFiles/data/data_poll_messages"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "models_history",
+        "models_peers"
+      ],
+      "related": []
+    },
+    {
+      "id": "data_folders",
+      "paths": [
+        "Telegram/SourceFiles/data/data_chat_filters"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "models_peers",
+        "core_settings"
+      ],
+      "related": []
+    },
+    {
+      "id": "ui_theme_palette",
+      "paths": [
+        "Telegram/SourceFiles/window/themes/window_theme"
+      ],
+      "priority": 4,
+      "depends_on": [
+        "styles_parser",
+        "core_settings"
+      ],
+      "related": []
     }
   ]
 }
