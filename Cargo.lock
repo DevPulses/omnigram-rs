@@ -91,6 +91,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "calls_engine"
+version = "0.1.0"
+dependencies = [
+ "models_peers",
+ "mtproto_session",
+]
+
+[[package]]
 name = "cfg-if"
 version = "1.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"

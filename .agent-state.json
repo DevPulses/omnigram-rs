@@ -10,6 +10,11 @@
       "agent": "hermes",
       "locked": false
     },
+    "calls_engine": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
     "core_launcher": {
       "status": "done",
       "agent": "hermes",
@@ -77,6 +82,11 @@
     },
     "main_account_session": {
       "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
+    "media_audio_player": {
+      "status": "in_progress",
       "agent": "hermes",
       "locked": false
     },
