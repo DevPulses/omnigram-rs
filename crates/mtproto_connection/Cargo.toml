@@ -1,0 +1,10 @@
+[package]
+name = "mtproto_connection"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mtproto_transport = { path = "../mtproto_transport" }
+mtproto_dc_options = { path = "../mtproto_dc_options" }
+mtproto_session = { path = "../mtproto_session" }
+rand = "0.8"

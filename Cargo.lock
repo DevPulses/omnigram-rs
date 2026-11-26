@@ -355,6 +355,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "mtproto_connection"
+version = "0.1.0"
+dependencies = [
+ "mtproto_dc_options",
+ "mtproto_session",
+ "mtproto_transport",
+ "rand",
+]
+
+[[package]]
 name = "mtproto_dc_options"
 version = "0.1.0"
 dependencies = [
