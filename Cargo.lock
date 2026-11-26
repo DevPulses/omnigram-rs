@@ -204,6 +204,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "data_polls"
+version = "0.1.0"
+dependencies = [
+ "bitflags",
+ "data_media_types",
+ "models_history",
+ "models_peers",
+]
+
+[[package]]
 name = "dialogs_indexed_list"
 version = "0.1.0"
 dependencies = [

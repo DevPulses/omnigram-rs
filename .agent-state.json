@@ -45,9 +45,14 @@
       "agent": "hermes",
       "locked": false
     },
+    "data_polls": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
     "dialogs_indexed_list": {
-      "status": "in_progress",
-      "agent": "glyph",
+      "status": "done",
+      "agent": "hermes",
       "locked": false
     },
     "emoji_old_keys": {
@@ -58,11 +63,6 @@
     "history_view_element": {
       "status": "done",
       "agent": "hermes",
-      "locked": false
-    },
-    "history_view_list": {
-      "status": "in_progress",
-      "agent": "glyph",
       "locked": false
     },
     "main_account_session": {
@@ -177,8 +177,8 @@
     },
     "ui_dialogs_widget": {
       "status": "pending",
-      "agent": "glyph",
-      "locked": true
+      "agent": null,
+      "locked": false
     },
     "ui_main_window": {
       "status": "done",
