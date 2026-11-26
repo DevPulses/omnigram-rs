@@ -787,6 +787,59 @@
         "storage_serialize"
       ],
       "related": []
+    },
+    {
+      "id": "mtproto_config",
+      "paths": [
+        "Telegram/SourceFiles/mtproto/mtproto_config"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "mtproto_client",
+        "storage_serialize"
+      ],
+      "related": []
+    },
+    {
+      "id": "storage_shared_media",
+      "paths": [
+        "Telegram/SourceFiles/storage/storage_shared_media"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "models_history",
+        "models_peers",
+        "data_media_types"
+      ],
+      "related": []
+    },
+    {
+      "id": "data_session",
+      "paths": [
+        "Telegram/SourceFiles/data/data_session"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "models_peers",
+        "models_history",
+        "data_media_types",
+        "data_polls",
+        "data_chat_reactions",
+        "data_folders"
+      ],
+      "related": []
+    },
+    {
+      "id": "api_global_privacy",
+      "paths": [
+        "Telegram/SourceFiles/api/api_global_privacy"
+      ],
+      "priority": 3,
+      "depends_on": [
+        "mtproto_client",
+        "main_account_session"
+      ],
+      "related": []
     }
   ]
 }
