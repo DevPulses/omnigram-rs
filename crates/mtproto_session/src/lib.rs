@@ -43,6 +43,10 @@ impl MtprotoSession {
         self.server_salt
     }
 
+    pub fn last_msg_id(&self) -> u64 {
+        self.last_msg_id
+    }
+
     pub fn set_server_salt(&mut self, salt: u64) {
         self.server_salt = salt;
     }

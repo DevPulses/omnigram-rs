@@ -1,0 +1,18 @@
+[package]
+name = "mtproto_client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mtproto_connection = { path = "../mtproto_connection" }
+mtproto_session = { path = "../mtproto_session" }
+mtproto_auth_key = { path = "../mtproto_auth_key" }
+mtproto_dc_options = { path = "../mtproto_dc_options" }
+tl_reader = { path = "../tl_reader" }
+tl_writer = { path = "../tl_writer" }
+flate2 = "1.0"
+
+[dev-dependencies]
+crypto_aes_ige = { path = "../crypto_aes_ige" }
+rand = "0.8"
+sha2 = "0.10"

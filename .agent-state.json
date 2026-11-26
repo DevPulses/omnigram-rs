@@ -120,6 +120,11 @@
       "agent": "hermes",
       "locked": false
     },
+    "mtproto_client": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
     "mtproto_connection": {
       "status": "done",
       "agent": "hermes",
