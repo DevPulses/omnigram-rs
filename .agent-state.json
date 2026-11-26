@@ -140,6 +140,11 @@
       "agent": "hermes",
       "locked": false
     },
+    "storage_media_prepare": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
     "storage_serialize": {
       "status": "done",
       "agent": "hermes",
@@ -201,6 +206,11 @@
       "locked": false
     },
     "ui_render_surface": {
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
+    "ui_text_entities": {
       "status": "done",
       "agent": "hermes",
       "locked": false

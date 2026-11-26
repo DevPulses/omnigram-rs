@@ -665,6 +665,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "storage_media_prepare"
+version = "0.1.0"
+dependencies = [
+ "data_media_types",
+ "storage_serialize",
+]
+
+[[package]]
 name = "storage_serialize"
 version = "0.1.0"
 dependencies = [
@@ -804,6 +812,14 @@ version = "0.1.0"
 dependencies = [
  "styles_parser",
  "ui_main_window",
+]
+
+[[package]]
+name = "ui_text_entities"
+version = "0.1.0"
+dependencies = [
+ "models_history",
+ "styles_parser",
 ]
 
 [[package]]

@@ -1,3 +1,4 @@
 /target
 /tdesktop
-.glyph-worker.log
+.glyph-*
+ideas.txt
