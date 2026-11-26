@@ -51,8 +51,13 @@
       "locked": false
     },
     "history_view_element": {
-      "status": "pending",
-      "agent": null,
+      "status": "done",
+      "agent": "hermes",
+      "locked": false
+    },
+    "history_view_list": {
+      "status": "in_progress",
+      "agent": "glyph",
       "locked": false
     },
     "main_account_session": {

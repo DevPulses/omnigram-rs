@@ -1,0 +1,12 @@
+[package]
+name = "history_view_element"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+models_history = { path = "../models_history" }
+models_peers = { path = "../models_peers" }
+ui_message_bubble = { path = "../ui_message_bubble" }
+styles_parser = { path = "../styles_parser" }
+data_media_types = { path = "../data_media_types" }
+serde = { version = "1.0", features = ["derive"] }
