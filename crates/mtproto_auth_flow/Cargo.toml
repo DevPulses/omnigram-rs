@@ -1,0 +1,9 @@
+[package]
+name = "mtproto_auth_flow"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mtproto_session = { path = "../mtproto_session" }
+main_account_session = { path = "../main_account_session" }
+mtproto_connection = { path = "../mtproto_connection" }

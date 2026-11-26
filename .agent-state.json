@@ -81,8 +81,8 @@
       "locked": false
     },
     "mtproto_auth_flow": {
-      "status": "pending",
-      "agent": null,
+      "status": "done",
+      "agent": "hermes",
       "locked": false
     },
     "mtproto_auth_key": {

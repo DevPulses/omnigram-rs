@@ -343,6 +343,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "mtproto_auth_flow"
+version = "0.1.0"
+dependencies = [
+ "main_account_session",
+ "mtproto_connection",
+ "mtproto_session",
+]
+
+[[package]]
 name = "mtproto_auth_key"
 version = "0.1.0"
 dependencies = [
