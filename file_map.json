@@ -743,6 +743,50 @@
         "models_peers"
       ],
       "related": []
+    },
+    {
+      "id": "crypto_srp",
+      "paths": [
+        "Telegram/SourceFiles/core/core_cloud_password"
+      ],
+      "priority": 1,
+      "depends_on": [
+        "crypto_kdf",
+        "mtproto_auth_key"
+      ],
+      "related": [
+        "mtproto_auth_flow"
+      ]
+    },
+    {
+      "id": "mtproto_client",
+      "paths": [
+        "Telegram/SourceFiles/mtproto/sender"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "mtproto_connection",
+        "mtproto_session",
+        "mtproto_auth_key"
+      ],
+      "related": [
+        "api_updates",
+        "api_send_message"
+      ]
+    },
+    {
+      "id": "storage_file_transfer",
+      "paths": [
+        "Telegram/SourceFiles/storage/file_download",
+        "Telegram/SourceFiles/storage/file_upload"
+      ],
+      "priority": 2,
+      "depends_on": [
+        "mtproto_client",
+        "data_media_types",
+        "storage_serialize"
+      ],
+      "related": []
     }
   ]
 }
